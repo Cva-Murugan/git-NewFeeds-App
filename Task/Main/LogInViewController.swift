@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class SignUpViewController: UIViewController,UITextFieldDelegate {
+class LogInViewController: UIViewController,UITextFieldDelegate {
 
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet var passwordError: UILabel!
     
-
+    var status = false
     
     override func viewDidLoad() {
   
@@ -27,13 +27,20 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         emailTextField.delegate = self
         PswdTextField.delegate = self
         
-        authentication()
+//        UserDefaults.standard.removeObject(forKey: "status")
+//        UserDefaults.standard.removeObject(forKey: "loginStatus")
+//        authentication()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         passwordError.isHidden = true
         emailError.isHidden = true
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//       let val = UserDefaults.standard.value(forKey: "loginStatus")
+//        print(val!)
+//    }
     
     func isValidMailInput(input: String) -> Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -42,7 +49,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     }
     
     public func isValidPassword(password: String) -> Bool {
-            let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
+//            let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
+            let passwordRegex = "^(?=.*\\d)(?=.*[a-z])[0-9a-z]{8,}$"
             return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
         }
     
@@ -73,7 +81,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     }
 
     
-    @IBAction func signUpBtn(_ sender: Any) {
+    @IBAction func logInBtnTap(_ sender: Any) {
         if let email = emailTextField.text, let password = PswdTextField.text{
             if email == "" && password == ""{
                 fieldEmptyError()
@@ -85,10 +93,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                 validEmail()
             }else if !isValidPassword(password: password) {
                 validPassword()
-            }else if isValidPassword(password: password) && isValidMailInput(input: email){
-                navigation()
-                
-                print("okey")
+            }else if isValidPassword(password: password) && isValidMailInput(input: email) {
+                authentication()
             }
         }
     }
@@ -109,20 +115,25 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
+
+    
+    func values(){
+        print("\(PswdTextField.text!)")
+        print("\(emailTextField.text!)")
+    }
     
     func authentication(){
         
-        var params: Parameters = [
+        let params: Parameters = [
             "app_name" : "rep_app",
             "device": "Web",
             "deviceType": "Laptop / Desktop - ( Chrome (113.0.0.0) )",
-            "email" : "abigail.mcintee@v3coresalix.com",
-            "password" : "radius123",
+            "email" : "\(emailTextField.text!)",
+            "password" : "\(PswdTextField.text!)",
             "time_zone" : "Asia/Calcutta"
             ]
-        
 
-    AF.request("https://salixv3core.radiusdirect.net/coreapi/v2/userlogin", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate(statusCode: 200 ..< 299).responseData { response in
+        AF.request("https://salixv3core.radiusdirect.net/coreapi/v2/userlogin", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate(statusCode: 200 ..< 299).responseData { response in
             switch response.result {
                 case .success(let data):
                     do {
@@ -130,18 +141,31 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                             print("Error: Cannot convert data to JSON object")
                             return
                         }
+                        
                         guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                             print("Error: Cannot convert JSON object to Pretty JSON data")
                             return
                         }
-                        guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .ascii) else {
+                        
+                        guard let _ = String(data: prettyJsonData, encoding: .ascii) else {
                             print("Error: Could print JSON in String")
                             return
                         }
                 
-                        print(prettyPrintedJson)
-                        
-                    
+                        let apiData = MainModel(fromDictionary: jsonObject)
+                        if apiData.apiStatus {
+                            
+                            // navigation to mainviewController
+                            self.navigation()
+    
+                            //
+                            ApiValues.loginStaus = apiData.apiStatus as Bool
+                            UserDefaults.standard.set(ApiValues.loginStaus, forKey: "logIn_status")
+                            
+                            ApiValues.token = apiData.token as String
+                            // store token value in userdefaults
+                            UserDefaults.standard.set(ApiValues.token!, forKey: "Token")
+                        }
                         
                     } catch {
                         print("Error: Trying to convert JSON data to string")
@@ -151,5 +175,11 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                     print(error)
             }
         }
+    }
+    
+    static func shareInstance() -> UIViewController{
+        let vc = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "logInVc") as! LogInViewController
+
+        return vc
     }
 }

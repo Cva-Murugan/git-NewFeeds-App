@@ -7,18 +7,61 @@
 
 import UIKit
 
+
+class NavigationController: UINavigationController{
+    
+}
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+//    static var shared = SceneDelegate()
+    
     var window: UIWindow?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        let isLoggedIn =  UserDefaults.standard.value(forKey: "logIn_status") ?? false
+
+         if isLoggedIn as! Bool {
+                  print("User logged in")
+                  let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+             let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "mainVc") as! MainViewController
+                  self.window?.rootViewController = yourVC
+                  self.window?.makeKeyAndVisible()
+              }
+              else {
+                  print("User Not logged in")
+                  let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+                  self.window?.rootViewController = yourVC
+                  self.window?.makeKeyAndVisible()
+              }
+                
+   
         guard let _ = (scene as? UIWindowScene) else { return }
     }
+    
+    
+    func loadBaseController() {
+       let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+       guard let window = self.window else { return }
+       window.makeKeyAndVisible()
+       if UserDefaults.standard.bool(forKey: "logIn_status") == false {
+           
+           let loginVC: LogInViewController = storyboard.instantiateViewController(withIdentifier: "login") as! LogInViewController
+           self.window?.rootViewController = loginVC
+       } else {
+           let mainVC: HomeViewController = storyboard.instantiateViewController(withIdentifier: "showData") as! HomeViewController
+           let navigationHomeVC = UINavigationController(rootViewController: mainVC)
+           self.window?.rootViewController = navigationHomeVC
+       }
+        self.window?.makeKeyAndVisible()
+    }
 
+    
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

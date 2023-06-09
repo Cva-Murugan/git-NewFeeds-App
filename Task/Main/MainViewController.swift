@@ -8,6 +8,8 @@
 import SafariServices
 import UIKit
 
+
+
 class MainViewController: UIViewController {
     private var sideMenuViewController: SideMenuViewController!
     private var sideMenuShadowView: UIView!
@@ -16,6 +18,8 @@ class MainViewController: UIViewController {
     private var isExpanded: Bool = false
     private var draggingIsEnabled: Bool = false
     private var panBaseLocation: CGFloat = 0.0
+  
+    var sceneDelegate = SceneDelegate()
     
     // Expand/Collapse the side menu by changing trailing's constant
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
@@ -29,6 +33,7 @@ class MainViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         self.view.backgroundColor = .black
+        
         // Navigation Bar Appearance rgb(96, 108, 93)
         self.setNavBarAppearance(tintColor: .white, barColor: UIColor(red: 96/255.0, green: 108/255.0, blue: 93/255.0, alpha: 1.0))
 
@@ -167,11 +172,11 @@ extension MainViewController: SideMenuViewControllerDelegate {
         case 5:
             // Settings
             self.showViewController(viewController: UINavigationController.self, storyboardId: "SettingsNavID")
-        case 6: break
-            // Like us on facebook
+        case 6:
+           // logut
+            self.logOutAlert()
+        
             
-//            let safariVC = SFSafariViewController(url: URL(string: "https://www.facebook.com/johncodeos")!)
-//            present(safariVC, animated: true)
         default:
             break
         }
@@ -322,6 +327,91 @@ extension MainViewController: UIGestureRecognizerDelegate {
             break
         }
     }
+    
+    func logOutAlert(){
+
+        self.dismiss(animated: true)
+            
+        let alert = UIAlertController(title: "Log Out", message: "are you want to logout", preferredStyle: .alert)
+        
+        let yesbtn = UIAlertAction(title: "Yes", style: .destructive){ [self] (action) in
+            
+            
+            ApiValues.removeToken()
+
+            ApiValues.loginStaus = false
+            UserDefaults.standard.set(ApiValues.loginStaus, forKey: "logIn_status")
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                      var controller: UIViewController?
+//
+//
+              controller = storyboard.instantiateViewController(withIdentifier: "logInVc")
+
+            UIApplication.shared.delegate?.window??.rootViewController = controller
+
+//            self.navigationController?.popToRootViewController(animated: true)
+            
+            
+            
+//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//          let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+//            window?.rootViewController = yourVC
+//            window?.makeKeyAndVisible()
+            
+            
+            
+              let rootVc = UIApplication.shared.windows.first?.rootViewController
+//          UIWindowScene.windows
+            if let topVc = UIApplication.getTopViewController(){
+                if rootVc!.children.first is SideMenuViewController{ //childern
+                   
+//                let vc = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "logInVc") as! LogInViewController
+//
+//                SceneDelegate.shared.window?.rootViewController = vc
+                    
+                    
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                  let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+                    sceneDelegate.window?.rootViewController = yourVC
+                    sceneDelegate.window?.makeKeyAndVisible()
+                    topVc.navigationController?.popToRootViewController(animated: true)
+                    
+                    
+//                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                  let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+//                    window?.rootViewController = yourVC
+//                    window?.makeKeyAndVisible() //  mainvc
+//
+//                    topVc.navigationController?.popToRootViewController(animated: true)
+                    
+//           topVc.navigationController?.pushViewController(LogInViewController.shareInstance(), animated: true)
+                }else{
+                    topVc.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+            
+            
+            
+
+//            self.navigationController?.popToRootViewController(animated: true)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
+//            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        
+        let nobtn = UIAlertAction(title: "No", style: .cancel){ (action) in
+            self.dismiss(animated: true)
+        }
+        
+        alert.addAction(nobtn)
+        alert.addAction(yesbtn)
+        
+        self.present(alert, animated: true)
+    }
+    
 }
 
 extension UIViewController {

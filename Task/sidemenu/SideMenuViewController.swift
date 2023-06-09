@@ -27,7 +27,7 @@ class SideMenuViewController: UIViewController {
         SideMenuModel(icon: UIImage(systemName: "book.fill")!, title: "Books"),
         SideMenuModel(icon: UIImage(systemName: "person.fill")!, title: "Profile"),
         SideMenuModel(icon: UIImage(systemName: "slider.horizontal.3")!, title: "Settings"),
-        SideMenuModel(icon: UIImage(systemName: "hand.thumbsup.fill")!, title: "Like us on facebook")
+        SideMenuModel(icon: UIImage(systemName: "square.and.arrow.up.fill")!, title: "Logout")
     ]
 
     override func viewDidLoad() {
@@ -95,5 +95,6 @@ extension SideMenuViewController: UITableViewDataSource {
         if indexPath.row == 4 || indexPath.row == 6 {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+        
     }
 }
