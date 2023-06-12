@@ -12,7 +12,7 @@ protocol SideMenuViewControllerDelegate {
 
 class SideMenuViewController: UIViewController {
     
-    @IBOutlet var headerImageView: UIImageView!
+    
     @IBOutlet var sideMenuTableView: UITableView!
     @IBOutlet var footerLabel: UILabel!
 
@@ -59,15 +59,11 @@ class SideMenuViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
-
 extension SideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
 }
-
-// MARK: - UITableViewDataSource
 
 extension SideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -350,6 +350,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
             ApiValues.loginStaus = false
             UserDefaults.standard.set(ApiValues.loginStaus, forKey: "logIn_status")
             
+            // get top view controller then change
             let rootVc = UIApplication.shared.windows.first?.rootViewController
             if UIApplication.getTopViewController() != nil{
                 if rootVc!.children.first is SideMenuViewController{ //childern

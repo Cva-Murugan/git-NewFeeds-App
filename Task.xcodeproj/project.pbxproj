@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3FB0875753B9123C85B4AF43 /* Pods_Task.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17711AD03D4AC29A3E68D375 /* Pods_Task.framework */; };
+		982A80F42A36E19B00AF2B88 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 982A80F32A36E19B00AF2B88 /* NewsCell.xib */; };
+		982A80F62A36E1D000AF2B88 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982A80F52A36E1D000AF2B88 /* NewsCell.swift */; };
+		982A80F82A36E65F00AF2B88 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982A80F72A36E65F00AF2B88 /* Date + Extension.swift */; };
 		98656AE32A2F731800D650EB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98656AE22A2F731800D650EB /* LogInViewController.swift */; };
 		98656AE72A2F751F00D650EB /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98656AE62A2F751F00D650EB /* SideMenuCell.xib */; };
 		98656AE92A2F752700D650EB /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98656AE82A2F752700D650EB /* SideMenuCell.swift */; };
@@ -33,6 +36,9 @@
 /* Begin PBXFileReference section */
 		17711AD03D4AC29A3E68D375 /* Pods_Task.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Task.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3339553DC810F849A355416D /* Pods-Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task.release.xcconfig"; path = "Target Support Files/Pods-Task/Pods-Task.release.xcconfig"; sourceTree = "<group>"; };
+		982A80F32A36E19B00AF2B88 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		982A80F52A36E1D000AF2B88 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		982A80F72A36E65F00AF2B88 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		98656AE22A2F731800D650EB /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		98656AE62A2F751F00D650EB /* SideMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
 		98656AE82A2F752700D650EB /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -91,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				98656AE82A2F752700D650EB /* SideMenuCell.swift */,
+				982A80F52A36E1D000AF2B88 /* NewsCell.swift */,
+				982A80F32A36E19B00AF2B88 /* NewsCell.xib */,
 				98656AE62A2F751F00D650EB /* SideMenuCell.xib */,
 			);
 			path = cell;
@@ -193,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				98F60A422A33068E000FD5F9 /* UIApplication + Extension.swift */,
+				982A80F72A36E65F00AF2B88 /* Date + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			files = (
 				98CF21832A2DA8D90031AF09 /* LaunchScreen.storyboard in Resources */,
 				98CF217E2A2DA8D10031AF09 /* Main.storyboard in Resources */,
+				982A80F42A36E19B00AF2B88 /* NewsCell.xib in Resources */,
 				98F60A452A335486000FD5F9 /* asset.xcassets in Resources */,
 				98656AE72A2F751F00D650EB /* SideMenuCell.xib in Resources */,
 			);
@@ -324,8 +334,10 @@
 				98656AEB2A2F753100D650EB /* SideMenuModel.swift in Sources */,
 				98EB73B82A30AEC500DCB982 /* SceneDelegate.swift in Sources */,
 				98F60A432A33068E000FD5F9 /* UIApplication + Extension.swift in Sources */,
+				982A80F82A36E65F00AF2B88 /* Date + Extension.swift in Sources */,
 				98F60A3F2A32EB45000FD5F9 /* File.swift in Sources */,
 				986B92D62A2E1BA200B46D69 /* ProfileViewController.swift in Sources */,
+				982A80F62A36E1D000AF2B88 /* NewsCell.swift in Sources */,
 				986B92CE2A2E1B4900B46D69 /* HomeViewController.swift in Sources */,
 				986B92D22A2E1B8200B46D69 /* BooksViewController.swift in Sources */,
 				986B92D82A2E1BB100B46D69 /* SettingsViewController.swift in Sources */,
