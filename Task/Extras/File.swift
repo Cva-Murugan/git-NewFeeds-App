@@ -37,17 +37,14 @@ import UIKit
 //                  self.window?.makeKeyAndVisible()
 //              }
 //    }
-       
+
 //func userdefaults(){
 //        UserDefaults.standard.set(true, forKey: "loginStatus")
 //        UserDefaults.standard.set(true,forKey: "status")
 //}
 
-struct ApiValues {
-    static var loginStaus = false
-    static var token: String!
-    
-    static func removeToken(){
-        UserDefaults.standard.removeObject(forKey: "Token")
-    }
-}
+//func b(){
+//    let sceneDelegate = UIApplication.shared.connectedScenes
+//          .first!.delegate as! SceneDelegate
+//      sceneDelegate.window!.rootViewController = LogInViewController
+//}

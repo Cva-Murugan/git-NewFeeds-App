@@ -6,6 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+struct ApiValues {
+    static var loginStaus = false
+    static var token: String!
+    
+    static func removeToken(){
+        UserDefaults.standard.removeObject(forKey: "Token")
+    }
+}
 
 struct MainModel{
     var statusCode: Int!
@@ -146,105 +156,105 @@ struct User{
                 singleBrand = SingleBrand(fromDictionary: singleBrandData)
             }
         
-        activeStatus = dictionary["active_status"] as? Int
-        addedBy = dictionary["addedBy"] as? Int
-        address = dictionary["address"] as? String
-        address2 = dictionary["address2"] as? String
-        affiliation = dictionary["affiliation"] as? String
-        appVersion = dictionary["appVersion"] as? String
-        area = dictionary["area"] as? String
-        assistantDetails = dictionary["assistant_details"] as? String
-        attendeeType = dictionary["attendeeType"] as? Int
-        biography = dictionary["biography"] as? String
-        biographyPath = dictionary["biography_path"] as? String
-        capAmount = dictionary["cap_amount"] as? Int
-        capMaxLimit = dictionary["cap_max_limit"] as? Int
-        city = dictionary["city"] as? String
-        company = dictionary["company"] as? Int
-        companyName = dictionary["companyName"] as? String
-        contractDocument = dictionary["contract_document"] as? String
-        createdAt = dictionary["createdAt"] as? String
-        cv = dictionary["cv"] as? String
-        cvPath = dictionary["cv_path"] as? String
-        decile = dictionary["decile"] as? String
-        degree = dictionary["degree"] as? String
-        deleteStatus = dictionary["delete_status"] as? Int
-        department = dictionary["department"] as? Int
-        designation = dictionary["designation"] as? String
-        device = dictionary["device"] as? String
-        deviceName = dictionary["deviceName"] as? String
+        activeStatus = dictionary["active_status"] as? Int ?? 0
+        addedBy = dictionary["addedBy"] as? Int  ?? 0
+        address = dictionary["address"] as? String ?? ""
+        address2 = dictionary["address2"] as? String ?? ""
+        affiliation = dictionary["affiliation"] as? String ?? ""
+        appVersion = dictionary["appVersion"] as? String ?? ""
+        area = dictionary["area"] as? String ?? ""
+        assistantDetails = dictionary["assistant_details"] as? String ?? ""
+        attendeeType = dictionary["attendeeType"] as? Int ?? 0
+        biography = dictionary["biography"] as? String ?? ""
+        biographyPath = dictionary["biography_path"] as? String ?? ""
+        capAmount = dictionary["cap_amount"] as? Int ?? 0
+        capMaxLimit = dictionary["cap_max_limit"] as? Int ?? 0
+        city = dictionary["city"] as? String ?? ""
+        company = dictionary["company"] as? Int ?? 0
+        companyName = dictionary["companyName"] as? String ?? ""
+        contractDocument = dictionary["contract_document"] as? String ?? ""
+        createdAt = dictionary["createdAt"] as? String ?? ""
+        cv = dictionary["cv"] as? String ?? ""
+        cvPath = dictionary["cv_path"] as? String ?? ""
+        decile = dictionary["decile"] as? String ?? ""
+        degree = dictionary["degree"] as? String ?? ""
+        deleteStatus = dictionary["delete_status"] as? Int ?? 0
+        department = dictionary["department"] as? Int ?? 0
+        designation = dictionary["designation"] as? String ?? ""
+        device = dictionary["device"] as? String ?? ""
+        deviceName = dictionary["deviceName"] as? String ?? ""
         deviceToken = dictionary["deviceToken"] as? AnyObject
-        district = dictionary["district"] as? String
-        dm = dictionary["dm"] as? Int
-        email = dictionary["email"] as? String
-        employeeId = dictionary["employee_id"] as? String
-        encryptedTokenReset = dictionary["encrypted_token_reset"] as? String
-        firstName = dictionary["firstName"] as? String
-        foodAndBeverageEligiblity = dictionary["foodAndBeverageEligiblity"] as? Int
-        fullName = dictionary["fullName"] as? String
-        globalUser = dictionary["global_user"] as? Int
-        govtEmployee = dictionary["govt_employee"] as? String
-        hcpEntityId = dictionary["hcpEntityId"] as? Int
-        homeNumber = dictionary["home_number"] as? String
-        id = dictionary["id"] as? Int
-        imedId = dictionary["imed_id"] as? String
-        inExternalStatus = dictionary["in_external_status"] as? Int
-        institution = dictionary["institution"] as? String
-        institutionAddress = dictionary["institution_address"] as? String
-        institutionAddress1 = dictionary["institution_address1"] as? String
-        institutionRestriction = dictionary["institution_restriction"] as? String
-        institutionState = dictionary["institution_state"] as? String
-        institutionZip = dictionary["institution_zip"] as? String
-        introVideo = dictionary["intro_video"] as? Int
-        isCloned = dictionary["isCloned"] as? Int
-        isCohostHierarchyDisabled = dictionary["is_cohost_hierarchy_disabled"] as? String
-        isContentSorter = dictionary["is_content_sorter"] as? Int
-        isCreateEngagementDisable = dictionary["is_create_engagement_disable"] as? Int
-        isCustomerMaster = dictionary["is_customer_master"] as? Int
-        isMaUser = dictionary["is_ma_user"] as? String
-        jde = dictionary["jde"] as? Int
-        lastName = dictionary["lastName"] as? String
-        licensedState = dictionary["licensed_state"] as? String
-        loginFlag = dictionary["login_flag"] as? Int
-        marketingUser = dictionary["marketing_user"] as? Int
-        midName = dictionary["midName"] as? String
-        nationalSpeaker = dictionary["nationalSpeaker"] as? Int
-        nationalUser = dictionary["national_user"] as? Int
-        noOfLiveprograms = dictionary["no_of_liveprograms"] as? Int
-        photo = dictionary["photo"] as? String
-        photoPath = dictionary["photo_path"] as? String
-        preferredName = dictionary["preferred_name"] as? String
-        prescriber = dictionary["prescriber"] as? Int
-        primaryEmail = dictionary["primary_email"] as? String
-        reconciled = dictionary["reconciled"] as? Int
-        region = dictionary["region"] as? String
-        rep = dictionary["rep"] as? Int
-        resetPasswordFlag = dictionary["reset_password_flag"] as? Int
-        residentStatus = dictionary["resident_status"] as? Int
-        role = dictionary["role"] as? Int
-        secondryEmail = dictionary["secondry_email"] as? String
+        district = dictionary["district"] as? String ?? ""
+        dm = dictionary["dm"] as? Int ?? 0
+        email = dictionary["email"] as? String ?? ""
+        employeeId = dictionary["employee_id"] as? String ?? ""
+        encryptedTokenReset = dictionary["encrypted_token_reset"] as? String ?? ""
+        firstName = dictionary["firstName"] as? String ?? ""
+        foodAndBeverageEligiblity = dictionary["foodAndBeverageEligiblity"] as? Int ?? 0
+        fullName = dictionary["fullName"] as? String ?? ""
+        globalUser = dictionary["global_user"] as? Int ?? 0
+        govtEmployee = dictionary["govt_employee"] as? String ?? ""
+        hcpEntityId = dictionary["hcpEntityId"] as? Int ?? 0
+        homeNumber = dictionary["home_number"] as? String ?? ""
+        id = dictionary["id"] as? Int ?? 0
+        imedId = dictionary["imed_id"] as? String ?? ""
+        inExternalStatus = dictionary["in_external_status"] as? Int ?? 0
+        institution = dictionary["institution"] as? String ?? ""
+        institutionAddress = dictionary["institution_address"] as? String ?? ""
+        institutionAddress1 = dictionary["institution_address1"] as? String ?? ""
+        institutionRestriction = dictionary["institution_restriction"] as? String ?? ""
+        institutionState = dictionary["institution_state"] as? String ?? ""
+        institutionZip = dictionary["institution_zip"] as? String ?? ""
+        introVideo = dictionary["intro_video"] as? Int ?? 0
+        isCloned = dictionary["isCloned"] as? Int ?? 0
+        isCohostHierarchyDisabled = dictionary["is_cohost_hierarchy_disabled"] as? String ?? ""
+        isContentSorter = dictionary["is_content_sorter"] as? Int ?? 0
+        isCreateEngagementDisable = dictionary["is_create_engagement_disable"] as? Int ?? 0
+        isCustomerMaster = dictionary["is_customer_master"] as? Int ?? 0
+        isMaUser = dictionary["is_ma_user"] as? String ?? ""
+        jde = dictionary["jde"] as? Int ?? 0
+        lastName = dictionary["lastName"] as? String ?? ""
+        licensedState = dictionary["licensed_state"] as? String ?? ""
+        loginFlag = dictionary["login_flag"] as? Int ?? 0
+        marketingUser = dictionary["marketing_user"] as? Int ?? 0
+        midName = dictionary["midName"] as? String ?? ""
+        nationalSpeaker = dictionary["nationalSpeaker"] as? Int ?? 0
+        nationalUser = dictionary["national_user"] as? Int ?? 0
+        noOfLiveprograms = dictionary["no_of_liveprograms"] as? Int ?? 0
+        photo = dictionary["photo"] as? String ?? ""
+        photoPath = dictionary["photo_path"] as? String ?? ""
+        preferredName = dictionary["preferred_name"] as? String ?? ""
+        prescriber = dictionary["prescriber"] as? Int ?? 0
+        primaryEmail = dictionary["primary_email"] as? String ?? ""
+        reconciled = dictionary["reconciled"] as? Int ?? 0
+        region = dictionary["region"] as? String ?? ""
+        rep = dictionary["rep"] as? Int ?? 0
+        resetPasswordFlag = dictionary["reset_password_flag"] as? Int ?? 0
+        residentStatus = dictionary["resident_status"] as? Int ?? 0
+        role = dictionary["role"] as? Int ?? 0
+        secondryEmail = dictionary["secondry_email"] as? String ?? ""
         shipmentTrack = dictionary["shipment_track"] as? AnyObject
         
-        singleProduct = dictionary["singleProduct"] as? String
-        speakerStatus = dictionary["speaker_status"] as? Int
-        speciality = dictionary["speciality"] as? String
-        state = dictionary["state"] as? String
-        stateLicenseNo = dictionary["state_license_no"] as? String
-        subscribeToNewsletter = dictionary["subscribe_to_newsletter"] as? Int
-        telephone = dictionary["telephone"] as? String
-        termsCondition = dictionary["terms_condition"] as? Int
-        territory = dictionary["territory"] as? String
-        tier = dictionary["tier"] as? Int
-        title = dictionary["title"] as? String
-        unsubscribe = dictionary["unsubscribe"] as? Int
-        updatedAt = dictionary["updatedAt"] as? String
-        userType = dictionary["userType"] as? String
-        vaFlag = dictionary["va_flag"] as? Int
-        veevaId = dictionary["veeva_id"] as? String
-        videoPlayPauseUrl = dictionary["video_play_pause_url"] as? String
-        videoUpdateSecondsUrl = dictionary["video_update_seconds_url"] as? String
-        yrsOfExperience = dictionary["yrsOfExperience"] as? String
-        zip = dictionary["zip"] as? String
+        singleProduct = dictionary["singleProduct"] as? String ?? ""
+        speakerStatus = dictionary["speaker_status"] as? Int ?? 0
+        speciality = dictionary["speciality"] as? String ?? ""
+        state = dictionary["state"] as? String ?? ""
+        stateLicenseNo = dictionary["state_license_no"] as? String ?? ""
+        subscribeToNewsletter = dictionary["subscribe_to_newsletter"] as? Int ?? 0
+        telephone = dictionary["telephone"] as? String ?? ""
+        termsCondition = dictionary["terms_condition"] as? Int ?? 0
+        territory = dictionary["territory"] as? String ?? ""
+        tier = dictionary["tier"] as? Int ?? 0
+        title = dictionary["title"] as? String ?? ""
+        unsubscribe = dictionary["unsubscribe"] as? Int  ?? 0
+        updatedAt = dictionary["updatedAt"] as? String ?? ""
+        userType = dictionary["userType"] as? String ?? ""
+        vaFlag = dictionary["va_flag"] as? Int ?? 0
+        veevaId = dictionary["veeva_id"] as? String ?? ""
+        videoPlayPauseUrl = dictionary["video_play_pause_url"] as? String ?? ""
+        videoUpdateSecondsUrl = dictionary["video_update_seconds_url"] as? String ?? ""
+        yrsOfExperience = dictionary["yrsOfExperience"] as? String ?? ""
+        zip = dictionary["zip"] as? String ?? ""
     }
 
 }

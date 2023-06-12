@@ -21,15 +21,22 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
     
     var status = false
     
+    @IBOutlet weak var loginBtn: UIButton!
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
   
         super.viewDidLoad()
         emailTextField.delegate = self
         PswdTextField.delegate = self
         
-//        UserDefaults.standard.removeObject(forKey: "status")
-//        UserDefaults.standard.removeObject(forKey: "loginStatus")
-//        authentication()
+        loginBtn.layer.borderWidth = 3
+        loginBtn.layer.borderColor = UIColor.clear.cgColor
+//        loginBtn.layer.cornerRadius = 50
+                 
+        spinner.isHidden = true
+        spinner.hidesWhenStopped = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,10 +44,8 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
         emailError.isHidden = true
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//       let val = UserDefaults.standard.value(forKey: "loginStatus")
-//        print(val!)
-//    }
+    
+    
     
     func isValidMailInput(input: String) -> Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -79,9 +84,21 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
         passwordError.text = "Enter valid Password"
         passwordError.isHidden = false
     }
+    
+    func emailAndPswdIncorrect(){
+        let alert = UIAlertController(title: "Error", message: "Incorrect Email or Password", preferredStyle: .alert)
+        
+        let okbtn = UIAlertAction(title: "Ok", style: .cancel){ _ in
+            self.emailTextField.text = ""
+            self.PswdTextField.text = ""
+        }
+        alert.addAction(okbtn)
+        self.present(alert, animated: true)
+    }
 
     
     @IBAction func logInBtnTap(_ sender: Any) {
+        print("tapped.........")
         if let email = emailTextField.text, let password = PswdTextField.text{
             if email == "" && password == ""{
                 fieldEmptyError()
@@ -94,6 +111,8 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
             }else if !isValidPassword(password: password) {
                 validPassword()
             }else if isValidPassword(password: password) && isValidMailInput(input: email) {
+                self.spinner.isHidden = false
+                spinner.startAnimating()
                 authentication()
             }
         }
@@ -101,9 +120,14 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
     
 
     func navigation(){
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainVc")
         
-        self.navigationController?.pushViewController(storyBoard, animated: true)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "mainVc") as! MainViewController
+        
+        let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+        sceneDelegate.window!.rootViewController = yourVC
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
     
     
@@ -114,8 +138,6 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
             passwordError.isHidden = true
         }
     }
-    
-
     
     func values(){
         print("\(PswdTextField.text!)")
@@ -133,48 +155,52 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
             "time_zone" : "Asia/Calcutta"
             ]
 
-        AF.request("https://salixv3core.radiusdirect.net/coreapi/v2/userlogin", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate(statusCode: 200 ..< 299).responseData { response in
+        AF.request("https://salixv3core.radiusdirect.net/coreapi/v2/userlogin", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).validate(statusCode: 200 ..< 500).responseData { response in
             switch response.result {
                 case .success(let data):
-                    do {
-                        guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                            print("Error: Cannot convert data to JSON object")
-                            return
-                        }
-                        
-                        guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
-                            print("Error: Cannot convert JSON object to Pretty JSON data")
-                            return
-                        }
-                        
-                        guard let _ = String(data: prettyJsonData, encoding: .ascii) else {
-                            print("Error: Could print JSON in String")
-                            return
-                        }
-                
-                        let apiData = MainModel(fromDictionary: jsonObject)
-                        if apiData.apiStatus {
+            
+                        do {
+                            guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                                print("Error: Cannot convert data to JSON object")
+                                return
+                            }
                             
-                            // navigation to mainviewController
-                            self.navigation()
-    
-                            //
-                            ApiValues.loginStaus = apiData.apiStatus as Bool
-                            UserDefaults.standard.set(ApiValues.loginStaus, forKey: "logIn_status")
+                            guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                                print("Error: Cannot convert JSON object to Pretty JSON data")
+                                return
+                            }
                             
-                            ApiValues.token = apiData.token as String
-                            // store token value in userdefaults
-                            UserDefaults.standard.set(ApiValues.token!, forKey: "Token")
+                            guard let _ = String(data: prettyJsonData, encoding: .ascii) else {
+                                print("Error: Could print JSON in String")
+                                return
+                            }
+                    
+                            let apiData = MainModel(fromDictionary: jsonObject)
+                            if apiData.apiStatus {
+                                self.spinner.stopAnimating()
+                                
+                                // navigation to mainviewController
+                                self.navigation()
+                                //
+                                ApiValues.loginStaus = apiData.apiStatus as Bool
+                                UserDefaults.standard.set(ApiValues.loginStaus, forKey: "logIn_status")
+                                
+                                ApiValues.token = apiData.token as String
+                                // store token value in userdefaults
+                                UserDefaults.standard.set(ApiValues.token!, forKey: "Token")
+                            }else{
+                                self.emailAndPswdIncorrect()
+                            }
+                            
+                        } catch {
+                            print("Error: Trying to convert JSON data to string")
+                            return
                         }
-                        
-                    } catch {
-                        print("Error: Trying to convert JSON data to string")
-                        return
-                    }
                 case .failure(let error):
                     print(error)
             }
         }
+        
     }
     
     static func shareInstance() -> UIViewController{

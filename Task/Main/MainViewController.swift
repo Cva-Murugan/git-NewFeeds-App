@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     private var draggingIsEnabled: Bool = false
     private var panBaseLocation: CGFloat = 0.0
   
-    var sceneDelegate = SceneDelegate()
+    lazy var sceneDelegate = SceneDelegate()
     
     // Expand/Collapse the side menu by changing trailing's constant
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
@@ -28,6 +28,10 @@ class MainViewController: UIViewController {
     
     var gestureEnabled: Bool = true
 
+    deinit{
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
@@ -45,7 +49,11 @@ class MainViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TapGestureRecognizer))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
+        
+        // close side menu when tapes...
         self.sideMenuShadowView.addGestureRecognizer(tapGestureRecognizer)
+        
+        // shadow
         if self.revealSideMenuOnTop {
             view.insertSubview(self.sideMenuShadowView, at: 1)
         }
@@ -195,8 +203,10 @@ extension MainViewController: SideMenuViewControllerDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: storyboardId) as! T
         vc.view.tag = 99
+/////////////////
         view.insertSubview(vc.view, at: self.revealSideMenuOnTop ? 0 : 1)
         addChild(vc)
+////////////////
         DispatchQueue.main.async {
             vc.view.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
@@ -226,7 +236,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
             }
         }
     }
-
+    
     // Close side menu when you tap on the shadow background view
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: self.sideMenuViewController.view))! {
@@ -239,18 +249,18 @@ extension MainViewController: UIGestureRecognizerDelegate {
     @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
         
         guard gestureEnabled == true else { return }
-
+        
         let position: CGFloat = sender.translation(in: self.view).x
         let velocity: CGFloat = sender.velocity(in: self.view).x
-
+        
         switch sender.state {
         case .began:
-
+            
             // If the user tries to expand the menu more than the reveal width, then cancel the pan gesture
             if velocity > 0, self.isExpanded {
                 sender.state = .cancelled
             }
-
+            
             // If the user swipes right but the side menu hasn't expanded yet, enable dragging
             if velocity > 0, !self.isExpanded {
                 self.draggingIsEnabled = true
@@ -259,7 +269,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
             else if velocity < 0, self.isExpanded {
                 self.draggingIsEnabled = true
             }
-
+            
             if self.draggingIsEnabled {
                 // If swipe is fast, Expand/Collapse the side menu with animation instead of dragging
                 let velocityThreshold: CGFloat = 550
@@ -268,7 +278,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
                     self.draggingIsEnabled = false
                     return
                 }
-
+                
                 if self.revealSideMenuOnTop {
                     self.panBaseLocation = 0.0
                     if self.isExpanded {
@@ -276,19 +286,19 @@ extension MainViewController: UIGestureRecognizerDelegate {
                     }
                 }
             }
-
+            
         case .changed:
-
+            
             // Expand/Collapse side menu while dragging
             if self.draggingIsEnabled {
                 if self.revealSideMenuOnTop {
                     // Show/Hide shadow background view while dragging
                     let xLocation: CGFloat = self.panBaseLocation + position
                     let percentage = (xLocation * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
-
+                    
                     let alpha = percentage >= 0.6 ? 0.6 : percentage
                     self.sideMenuShadowView.alpha = alpha
-
+                    
                     // Move side menu while dragging
                     if xLocation <= self.sideMenuRevealWidth {
                         self.sideMenuTrailingConstraint.constant = xLocation - self.sideMenuRevealWidth
@@ -298,10 +308,10 @@ extension MainViewController: UIGestureRecognizerDelegate {
                     if let recogView = sender.view?.subviews[1] {
                         // Show/Hide shadow background view while dragging
                         let percentage = (recogView.frame.origin.x * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
-
+                        
                         let alpha = percentage >= 0.6 ? 0.6 : percentage
                         self.sideMenuShadowView.alpha = alpha
-
+                        
                         // Move side menu while dragging
                         if recogView.frame.origin.x <= self.sideMenuRevealWidth, recogView.frame.origin.x >= 0 {
                             recogView.frame.origin.x = recogView.frame.origin.x + position
@@ -328,107 +338,124 @@ extension MainViewController: UIGestureRecognizerDelegate {
         }
     }
     
+    
     func logOutAlert(){
-
+        
         self.dismiss(animated: true)
-            
+        
         let alert = UIAlertController(title: "Log Out", message: "are you want to logout", preferredStyle: .alert)
         
-        let yesbtn = UIAlertAction(title: "Yes", style: .destructive){ [self] (action) in
-            
-            
+        let yesbtn = UIAlertAction(title: "Yes", style: .destructive) { (action) in
             ApiValues.removeToken()
-
             ApiValues.loginStaus = false
             UserDefaults.standard.set(ApiValues.loginStaus, forKey: "logIn_status")
             
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                      var controller: UIViewController?
-//
-//
-              controller = storyboard.instantiateViewController(withIdentifier: "logInVc")
-
-            UIApplication.shared.delegate?.window??.rootViewController = controller
-
-//            self.navigationController?.popToRootViewController(animated: true)
-            
-            
-            
-//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//          let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
-//            window?.rootViewController = yourVC
-//            window?.makeKeyAndVisible()
-            
-            
-            
-              let rootVc = UIApplication.shared.windows.first?.rootViewController
-//          UIWindowScene.windows
-            if let topVc = UIApplication.getTopViewController(){
+            let rootVc = UIApplication.shared.windows.first?.rootViewController
+            if UIApplication.getTopViewController() != nil{
                 if rootVc!.children.first is SideMenuViewController{ //childern
-                   
-//                let vc = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "logInVc") as! LogInViewController
-//
-//                SceneDelegate.shared.window?.rootViewController = vc
                     
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "logInVc") as! LogInViewController
                     
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                  let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
-                    sceneDelegate.window?.rootViewController = yourVC
-                    sceneDelegate.window?.makeKeyAndVisible()
-                    topVc.navigationController?.popToRootViewController(animated: true)
+                    let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+                    sceneDelegate.window!.rootViewController = yourVC
                     
-                    
-//                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                  let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
-//                    window?.rootViewController = yourVC
-//                    window?.makeKeyAndVisible() //  mainvc
-//
-//                    topVc.navigationController?.popToRootViewController(animated: true)
-                    
-//           topVc.navigationController?.pushViewController(LogInViewController.shareInstance(), animated: true)
-                }else{
-                    topVc.navigationController?.popToRootViewController(animated: true)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
+                self.navigationController?.popToRootViewController(animated: true)
             }
-            
-            
-            
-
-//            self.navigationController?.popToRootViewController(animated: true)
-//            self.navigationController?.pushViewController(vc, animated: true)
-            
-//            self.navigationController?.popToRootViewController(animated: true)
         }
-        
-        
         let nobtn = UIAlertAction(title: "No", style: .cancel){ (action) in
             self.dismiss(animated: true)
+            
         }
-        
         alert.addAction(nobtn)
         alert.addAction(yesbtn)
         
         self.present(alert, animated: true)
+        
     }
-    
 }
 
-extension UIViewController {
-    
-    // With this extension you can access the MainViewController from the child view controllers.
-    func revealViewController() -> MainViewController? {
-        var viewController: UIViewController? = self
+        //                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //                var controller: UIViewController?
+        //                controller = storyboard.instantiateViewController(withIdentifier: "logInVc")
+        //                UIApplication.shared.delegate?.window??.rootViewController = controller
+        //            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //          let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+        //            window?.rootViewController = yourVC
+        //            window?.makeKeyAndVisible()
         
-        if viewController != nil && viewController is MainViewController {
-            return viewController! as? MainViewController
-        }
-        while (!(viewController is MainViewController) && viewController?.parent != nil) {
-            viewController = viewController?.parent
-        }
-        if viewController is MainViewController {
-            return viewController as? MainViewController
-        }
-        return nil
-    }
+        //              let rootVc = UIApplication.shared.windows.first?.rootViewController
+        //          UIWindowScene.windows
+        //            if let topVc = UIApplication.getTopViewController(){
+        //                if rootVc!.children.first is SideMenuViewController{ //childern
+        
+        //                let vc = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "logInVc") as! LogInViewController
+        //
+        //                SceneDelegate.shared.window?.rootViewController = vc
+        
+        //
+        //                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //                  let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+        //                    sceneDelegate.window?.rootViewController = yourVC
+        //                    sceneDelegate.window?.makeKeyAndVisible()
+        //                    topVc.navigationController?.popToRootViewController(animated: true)
+        
+        
+        //                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //                  let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "navController") as! NavigationController
+        //                    window?.rootViewController = yourVC
+        //                    window?.makeKeyAndVisible() //  mainvc
+        //
+        //                    topVc.navigationController?.popToRootViewController(animated: true)
+        
+        //           topVc.navigationController?.pushViewController(LogInViewController.shareInstance(), animated: true)
+        //                }else{
+        //                    topVc.navigationController?.popToRootViewController(animated: true)
+        //                }
+        
+        //            self.navigationController?.popToRootViewController(animated: true)
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+extension UIViewController {
+            
+            // With this extension you can access the MainViewController from the child view controllers.
+            func revealViewController() -> MainViewController? {
+                var viewController: UIViewController? = self
+                
+                if viewController != nil && viewController is MainViewController {
+                    return viewController! as? MainViewController
+                }
+                while (!(viewController is MainViewController) && viewController?.parent != nil) {
+                    viewController = viewController?.parent
+                }
+                if viewController is MainViewController {
+                    return viewController as? MainViewController
+                }
+                return nil
+            }
+            
+//    @IBAction func btnTap(){
+//        print("taped...........")
+//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "logInVc")
+//        //        self.navigationController?.pushViewController(vc, animated: true)
+//
+//        NotificationCenter.default.post(name: NSNotification.Name("logout"), object: nil)
+//        self.navigationController?.popToRootViewController(animated: true)
+//
+//        let rootVc = UIApplication.shared.windows.first?.rootViewController
+//        if UIApplication.getTopViewController() != nil{
+//            if rootVc!.children.first is SideMenuViewController{ //childern
+//
+//                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "logInVc") as! LogInViewController
+//
+//                let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+//                sceneDelegate.window!.rootViewController = yourVC
+//                self.navigationController?.popToRootViewController(animated: true)
+//            }
+//        }
+//    }
 }
