@@ -14,6 +14,14 @@ struct News{
 }
 
 
+
+struct NbaTeams{
+    var teamName:String
+    var managerName: String
+    var teamLogo: UIImage
+    
+}
+
 class HomeViewController: UIViewController{
    
     
@@ -21,7 +29,22 @@ class HomeViewController: UIViewController{
 
     @IBOutlet var newsTableView: UITableView!
     
-    var cellSpacingHeight: CGFloat = 10
+    @IBOutlet weak var colllectionView: UICollectionView!
+    
+
+    var model = NbaModel()
+    var index:Int = 0
+
+
+    
+    var teams: [NbaTeams] = [
+        NbaTeams(teamName: "MIAMI HEAT", managerName: "Manager: ", teamLogo: UIImage(named: "MIAMI HEAT")!),
+        NbaTeams(teamName: "LOS ANGELES LAKERS", managerName: "Manager: ",teamLogo: UIImage(named: "LOS ANGELES LAKERS")!),
+        NbaTeams(teamName: "PHILADELPHIA 76ERS", managerName: "Manager: ", teamLogo: UIImage(named: "PHILADELPHIA 76ERS")!),
+        NbaTeams(teamName: "GOLDEN STATE WARRIORS", managerName: "Manager: ", teamLogo: UIImage(named: "GOLDEN STATE WARRIORS")!),
+                 NbaTeams(teamName: "CHICAGO BULLS", managerName: "Manager: ", teamLogo: UIImage(named: "bulls")!)
+    ]
+    
     
     
     var news :[News] = [
@@ -33,6 +56,8 @@ class HomeViewController: UIViewController{
         News(Heading: "NDTV", content: "Have Faith In Mark Zuckerberg's Leadership? 70% Facebook Employees Say No", time: Date.getDate(date: "11-06-2023")!)// Updated: June 11, 2023 2:42 pm IST//
     ]
     
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Menu Button Tint Color
@@ -43,16 +68,22 @@ class HomeViewController: UIViewController{
         
         newsTableView.delegate = self
         newsTableView.dataSource = self
+        colllectionView.delegate = self
+        colllectionView.dataSource = self
         
         view.backgroundColor = .clear
         // Register TableView Cell
         self.newsTableView.register(NewsCell.nib, forCellReuseIdentifier: NewsCell.identifier)
         newsTableView.backgroundColor = .black
         
-//        newsTableView.translatesAutoresizingMaskIntoConstraints = false
-//        newsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//        newsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         
+        self.newsTableView.register(NbaTeamsTableViewCell.nib, forCellReuseIdentifier: NbaTeamsTableViewCell.identifier)
+        
+        self.colllectionView.register(CollectionViewCell.nib, forCellWithReuseIdentifier: "collectionCell")
+        
+        self.colllectionView.reloadData()
+        
+
         // Update TableView with the data
         self.newsTableView.reloadData()
         
@@ -69,7 +100,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return news.count
+        if index == 0{
+            return news.count
+        }else{
+            return 5
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,60 +123,97 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
       }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.identifier, for: indexPath) as? NewsCell else { fatalError("xib doesn't exist") }
+   
+        if index == 0{
+            guard let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsCell.identifier, for: indexPath) as? NewsCell else { fatalError("xib doesn't exist") }
 
-        cell.selectionStyle = .none
-        
-//        cell.isHighlighted = false
-        cell.titleLabel.text = news[indexPath.section].Heading
-        
-        cell.contentlabel.text = news[indexPath.section].content
-        
-//        cell.timeLabel.text = news[indexPath.section].time.format()
-        
-        
-        if Calendar.current.isDateInYesterday(news[indexPath.section].time) {
-            cell.timeLabel.text  = "Yesterday"
-        }else if Calendar.current.isDateInToday(news[indexPath.section].time) {
-            cell.timeLabel.text = news[indexPath.section].time.format()
+            cell.selectionStyle = .none
             
-//            let minute:TimeInterval = 60.0
-//            let hour:TimeInterval = 60.0 * minute
-//            let _:TimeInterval = 24 * hour
-//
-//            var ineterval =  Date(timeInterval: hour, since: news[indexPath.section].time)
-//            print(ineterval)
-        }else{
-            cell.timeLabel.text = news[indexPath.section].time.format()
+            cell.titleLabel.text = news[indexPath.section].Heading
+            cell.contentlabel.text = news[indexPath.section].content
+            if Calendar.current.isDateInYesterday(news[indexPath.section].time) {
+                cell.timeLabel.text  = "Yesterday"
+            }else if Calendar.current.isDateInToday(news[indexPath.section].time) {
+                cell.timeLabel.text = news[indexPath.section].time.format()
+
+            }else{
+                cell.timeLabel.text = news[indexPath.section].time.format()
+            }
+            
+            return cell
+        }else {
+            guard let cell = newsTableView.dequeueReusableCell(withIdentifier: NbaTeamsTableViewCell.identifier, for: indexPath) as? NbaTeamsTableViewCell else { fatalError("xib doesn't exist") }
+            
+            cell.selectionStyle = .none
+            cell.managerNamelabel.text = model.teams[indexPath.section].managerName
+            cell.teamLogo.image = model.teams[indexPath.section].teamLogo
+            cell.teamNameLabel.text = model.teams[indexPath.section].teamName
+            
+            
+            let rowArray = model.teams[indexPath.section].players
+            cell.updateCellWith(row: rowArray)
+            
+            return cell
         }
          
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+//        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionViewCell
         
-        if let diff = Calendar.current.dateComponents([.hour], from: news[indexPath.section].time, to: Date()).hour, diff < 48 {
-               print(diff)
-           }
-//        let diff = Calendar.current.dateComponents([.hour], from: news[indexPath.section].time, to:.now)
-//        if diff["hour"] <= 43{
-//            print(diff)
-//        }
         
-        
-//        let formatter = DateFormatter()
-//        if Calendar.current.isDateInToday(news[indexPath.section].time) {
-//            formatter.dateFormat = "h:mm a"
-//            let ineterval = Date().timeIntervalSince(news[indexPath.section].time)
-//            print(ineterval)
-//        }
-        
-//        cell.backgroundColor = UIColor.white
-//        cell.layer.borderColor = UIColor.black.cgColor
-//        cell.layer.borderWidth = 1
-//        cell.layer.cornerRadius = 10
-//        cell.clipsToBounds = true
+        if indexPath.item == 0 {
+            cell.buttonLabel.text = "News"
+        }else{
+            cell.buttonLabel.text = "sports"
+        }
+       
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        .init(width: collectionView.bounds.width/2, height: 50)
     }
+    
+    func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout,
+            minimumInteritemSpacingForSectionAt section: Int
+        ) -> CGFloat {
+            0
+        }
+
+        func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout,
+            minimumLineSpacingForSectionAt section: Int
+        ) -> CGFloat {
+            0
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == 1{
+            index = 1
+        }else {
+            index = 0
+        }
+        print(index)
+        newsTableView.reloadData()
+        
+    }
+    
 }
