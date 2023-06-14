@@ -456,11 +456,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SlB-PZ-0tz">
-                                <rect key="frame" x="0.0" y="58" width="375" height="626"/>
+                                <rect key="frame" x="0.0" y="65" width="385" height="619"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LWy-wz-YaD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="10" y="5" width="355" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZQB-dd-f8c"/>
@@ -482,11 +482,11 @@
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="SlB-PZ-0tz" firstAttribute="bottom" secondItem="tYn-IF-BbI" secondAttribute="bottom" id="4L7-z0-8i2"/>
-                            <constraint firstItem="LWy-wz-YaD" firstAttribute="trailing" secondItem="tYn-IF-BbI" secondAttribute="trailing" id="ERe-2u-ory"/>
-                            <constraint firstItem="LWy-wz-YaD" firstAttribute="leading" secondItem="tYn-IF-BbI" secondAttribute="leading" id="KA9-rR-b3J"/>
-                            <constraint firstItem="SlB-PZ-0tz" firstAttribute="top" secondItem="LWy-wz-YaD" secondAttribute="bottom" constant="8" id="NYj-62-vZn"/>
-                            <constraint firstItem="SlB-PZ-0tz" firstAttribute="trailing" secondItem="tYn-IF-BbI" secondAttribute="trailing" id="e6C-Xy-iRB"/>
-                            <constraint firstItem="LWy-wz-YaD" firstAttribute="top" secondItem="tYn-IF-BbI" secondAttribute="top" id="pqY-cu-ScG"/>
+                            <constraint firstItem="LWy-wz-YaD" firstAttribute="trailing" secondItem="tYn-IF-BbI" secondAttribute="trailing" constant="-10" id="ERe-2u-ory"/>
+                            <constraint firstItem="LWy-wz-YaD" firstAttribute="leading" secondItem="tYn-IF-BbI" secondAttribute="leading" constant="10" id="KA9-rR-b3J"/>
+                            <constraint firstItem="SlB-PZ-0tz" firstAttribute="top" secondItem="LWy-wz-YaD" secondAttribute="bottom" constant="10" id="NYj-62-vZn"/>
+                            <constraint firstItem="SlB-PZ-0tz" firstAttribute="trailing" secondItem="tYn-IF-BbI" secondAttribute="trailing" constant="10" id="e6C-Xy-iRB"/>
+                            <constraint firstItem="LWy-wz-YaD" firstAttribute="top" secondItem="tYn-IF-BbI" secondAttribute="top" constant="5" id="pqY-cu-ScG"/>
                             <constraint firstItem="SlB-PZ-0tz" firstAttribute="leading" secondItem="tYn-IF-BbI" secondAttribute="leading" id="sAU-OA-GMG"/>
                         </constraints>
                     </view>
@@ -494,7 +494,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="hRu-fM-JYV"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="colllectionView" destination="LWy-wz-YaD" id="fQo-Yw-xEY"/>
+                        <outlet property="collectionView" destination="LWy-wz-YaD" id="fQo-Yw-xEY"/>
                         <outlet property="newsTableView" destination="SlB-PZ-0tz" id="dQk-gG-Qms"/>
                         <outlet property="sideMenuBtn" destination="hRu-fM-JYV" id="BXt-61-Jb0"/>
                     </connections>

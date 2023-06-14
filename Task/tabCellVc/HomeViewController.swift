@@ -29,8 +29,8 @@ class HomeViewController: UIViewController{
 
     @IBOutlet var newsTableView: UITableView!
     
-    @IBOutlet weak var colllectionView: UICollectionView!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
+    var titleCell = CollectionViewCell()
 
     var model = NbaModel()
     var index:Int = 0
@@ -68,8 +68,8 @@ class HomeViewController: UIViewController{
         
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        colllectionView.delegate = self
-        colllectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         view.backgroundColor = .clear
         // Register TableView Cell
@@ -79,9 +79,13 @@ class HomeViewController: UIViewController{
         
         self.newsTableView.register(NbaTeamsTableViewCell.nib, forCellReuseIdentifier: NbaTeamsTableViewCell.identifier)
         
-        self.colllectionView.register(CollectionViewCell.nib, forCellWithReuseIdentifier: "collectionCell")
+//        var flowLayout = UICollectionViewFlowLayout()
+        self.collectionView?.layer.cornerRadius = 32
+//        self.collectionView.collectionViewLayout = flowLayout
         
-        self.colllectionView.reloadData()
+        self.collectionView.register(CollectionViewCell.nib, forCellWithReuseIdentifier: "collectionCell")
+        
+        self.collectionView.reloadData()
         
 
         // Update TableView with the data
@@ -166,18 +170,42 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath)
+////            cell?.layer.borderWidth = 2.0
+//        cell?.backgroundColor = .blue
+////        self.titleCell.HighLightView.backgroundColor = .blue
+//
+//    }
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! CollectionViewCell
         
+     
         
         if indexPath.item == 0 {
             cell.buttonLabel.text = "News"
+            cell.LeftCount.text = news.count.description
+            cell.rightCountView.isHidden = true
+//            cell.rightCount.isHidden = true
         }else{
-            cell.buttonLabel.text = "sports"
+            cell.buttonLabel.text = "Sports"
+            cell.rightCount.text = model.teams.count.description
+//            cell.LeftCount.isHidden = true
+            cell.LeftCountView.isHidden = true
         }
        
         
@@ -187,6 +215,8 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: collectionView.bounds.width/2, height: 50)
     }
+    
+    
     
     func collectionView(
             _ collectionView: UICollectionView,
@@ -206,6 +236,11 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+//        if let cell = collectionView.cellForItem(at:indexPath){
+//            cell.backgroundColor = UIColor.yellow
+//            dismiss(animated: true)
+//        }
+//        
         if indexPath.item == 1{
             index = 1
         }else {
@@ -215,5 +250,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
         newsTableView.reloadData()
         
     }
+    
+   
     
 }
