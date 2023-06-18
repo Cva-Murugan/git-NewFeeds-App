@@ -6,7 +6,7 @@ User Authentication: Handles user authentication and securely stores user sessio
 Customizable: Easily modify the app's appearance, colors, and navigation options to match your preferences.
 
 Requirements
-iOS 13.0+
+iOS 16.4+
 Xcode 13.0+
 Swift 5.5
 
