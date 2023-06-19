@@ -7,62 +7,137 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A9CB5E08-ACA9-4D71-833C-0309649E6E02"
-            shouldBeEnabled = "No"
+            uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Task/Main/LogInViewController.swift"
+            filePath = "Task/Main/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "logInBtnTap(_:)"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "logOutAlert()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A9CB5E08-ACA9-4D71-833C-0309649E6E02 - 7b5312e94e8c5865"
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50a9e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Task.LogInViewController.logInBtnTap(Any) -&gt; ()"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
                   moduleName = "Task"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/LogInViewController.swift"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "97">
+                  startingLineNumber = "364"
+                  endingLineNumber = "364"
+                  offsetFromSymbolStart = "377">
                </Location>
                <Location
-                  uuid = "A9CB5E08-ACA9-4D71-833C-0309649E6E02 - 7b5312e94e8c5865"
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50a9e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Task.LogInViewController.logInBtnTap(Any) -&gt; ()"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
                   moduleName = "Task"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/LogInViewController.swift"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "286">
+                  startingLineNumber = "364"
+                  endingLineNumber = "364"
+                  offsetFromSymbolStart = "682">
                </Location>
                <Location
-                  uuid = "A9CB5E08-ACA9-4D71-833C-0309649E6E02 - 7b5312e94e8c5865"
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50a9e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Task.LogInViewController.logInBtnTap(Any) -&gt; ()"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
                   moduleName = "Task"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/LogInViewController.swift"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "696">
+                  startingLineNumber = "364"
+                  endingLineNumber = "364"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50a9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "364"
+                  endingLineNumber = "364"
+                  offsetFromSymbolStart = "701">
+               </Location>
+               <Location
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50abf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "365"
+                  endingLineNumber = "365"
+                  offsetFromSymbolStart = "430">
+               </Location>
+               <Location
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50abf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "365"
+                  endingLineNumber = "365"
+                  offsetFromSymbolStart = "735">
+               </Location>
+               <Location
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50abf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "365"
+                  endingLineNumber = "365"
+                  offsetFromSymbolStart = "1179">
+               </Location>
+               <Location
+                  uuid = "6AA4DE9E-9BC2-4D7C-9A53-0B750B97DC23 - 54c1f239fef50abf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "365"
+                  endingLineNumber = "365"
+                  offsetFromSymbolStart = "1468">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -70,63 +145,437 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B63EAC0A-FC93-4B5C-852B-2BCE3C766BD1"
+            uuid = "3BA28981-6236-449B-B9E4-A271671799B4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Task/TableCell/NbaTeamsTableViewCell.swift"
+            filePath = "Task/Main/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
+            landmarkName = "logOutAlert()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5095c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "366"
+                  endingLineNumber = "366"
+                  offsetFromSymbolStart = "799">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5095c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "366"
+                  endingLineNumber = "366"
+                  offsetFromSymbolStart = "868">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5095c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "366"
+                  endingLineNumber = "366"
+                  offsetFromSymbolStart = "818">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5095c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "366"
+                  endingLineNumber = "366"
+                  offsetFromSymbolStart = "887">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5097d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5097d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367"
+                  offsetFromSymbolStart = "921">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5097d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367"
+                  offsetFromSymbolStart = "1585">
+               </Location>
+               <Location
+                  uuid = "3BA28981-6236-449B-B9E4-A271671799B4 - 54c1f239fef5097d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367"
+                  offsetFromSymbolStart = "1654">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5374D144-DF3A-482F-B5E1-0F30190BCD72"
+            uuid = "A2B792AB-B79D-46EC-9D3E-B39CCFDBE7A3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Task/TableCell/NbaTeamsTableViewCell.swift"
+            filePath = "Task/Main/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "NbaTeamsTableViewCell"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
+            landmarkName = "logOutAlert()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A2B792AB-B79D-46EC-9D3E-B39CCFDBE7A3 - 54c1f239fef509f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "371"
+                  endingLineNumber = "371"
+                  offsetFromSymbolStart = "1707">
+               </Location>
+               <Location
+                  uuid = "A2B792AB-B79D-46EC-9D3E-B39CCFDBE7A3 - 54c1f239fef509b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "373"
+                  endingLineNumber = "373"
+                  offsetFromSymbolStart = "1496">
+               </Location>
+               <Location
+                  uuid = "A2B792AB-B79D-46EC-9D3E-B39CCFDBE7A3 - 54c1f239fef50875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "1539">
+               </Location>
+               <Location
+                  uuid = "A2B792AB-B79D-46EC-9D3E-B39CCFDBE7A3 - 54c1f239fef50875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "2294">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07E3C8F1-AAD7-4BAC-9D12-50D9FB3ECCF3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Task/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "07E3C8F1-AAD7-4BAC-9D12-50D9FB3ECCF3 - 54c1f239fef50e65"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "391"
+                  endingLineNumber = "391"
+                  offsetFromSymbolStart = "2410">
+               </Location>
+               <Location
+                  uuid = "07E3C8F1-AAD7-4BAC-9D12-50D9FB3ECCF3 - 54c1f239fef50e44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "390"
+                  endingLineNumber = "390"
+                  offsetFromSymbolStart = "2410">
+               </Location>
+               <Location
+                  uuid = "07E3C8F1-AAD7-4BAC-9D12-50D9FB3ECCF3 - 54c1f239fef50e44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "390"
+                  endingLineNumber = "390"
+                  offsetFromSymbolStart = "3153">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96A8FE52-DB36-41B2-9322-15C4B86FEBDD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Task/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "logOutAlert()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "96A8FE52-DB36-41B2-9322-15C4B86FEBDD - 54c1f239fef508c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "378"
+                  endingLineNumber = "378"
+                  offsetFromSymbolStart = "1985">
+               </Location>
+               <Location
+                  uuid = "96A8FE52-DB36-41B2-9322-15C4B86FEBDD - 54c1f239fef508c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "378"
+                  endingLineNumber = "378"
+                  offsetFromSymbolStart = "2728">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7C17E43-347F-4CB8-8F4E-971CCD1EDFE6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Task/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
+            landmarkName = "logOutAlert()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E7C17E43-347F-4CB8-8F4E-971CCD1EDFE6 - 54c1f239fef5082b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "377"
+                  endingLineNumber = "377"
+                  offsetFromSymbolStart = "1770">
+               </Location>
+               <Location
+                  uuid = "E7C17E43-347F-4CB8-8F4E-971CCD1EDFE6 - 54c1f239fef5082b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "377"
+                  endingLineNumber = "377"
+                  offsetFromSymbolStart = "2513">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7FDA889-8FA5-4EB5-8ED5-1551D4D98839"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Task/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "MainViewController"
             landmarkType = "21">
             <Locations>
                <Location
-                  uuid = "5374D144-DF3A-482F-B5E1-0F30190BCD72 - 451490b137c342fb"
+                  uuid = "C7FDA889-8FA5-4EB5-8ED5-1551D4D98839 - 54c1f239fef5088e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Task.NbaTeamsTableViewCell.collectionView(_: __C.UICollectionView, layout: __C.UICollectionViewLayout, sizeForItemAt: Foundation.IndexPath) -&gt; __C.CGSize"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
                   moduleName = "Task"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/novastrid/Desktop/Task/Task/TableCell/NbaTeamsTableViewCell.swift"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "65">
+                  startingLineNumber = "380"
+                  endingLineNumber = "380"
+                  offsetFromSymbolStart = "2167">
                </Location>
                <Location
-                  uuid = "5374D144-DF3A-482F-B5E1-0F30190BCD72 - 451490b137c342fb"
+                  uuid = "C7FDA889-8FA5-4EB5-8ED5-1551D4D98839 - 54c1f239fef508e9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Task.NbaTeamsTableViewCell.collectionView(_: __C.UICollectionView, layout: __C.UICollectionViewLayout, sizeForItemAt: Foundation.IndexPath) -&gt; __C.CGSize"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
                   moduleName = "Task"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/novastrid/Desktop/Task/Task/TableCell/NbaTeamsTableViewCell.swift"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "61">
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "2167">
+               </Location>
+               <Location
+                  uuid = "C7FDA889-8FA5-4EB5-8ED5-1551D4D98839 - 54c1f239fef508e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in Task.MainViewController.logOutAlert() -&gt; ()"
+                  moduleName = "Task"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/novastrid/Desktop/Task/Task/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "2910">
                </Location>
             </Locations>
          </BreakpointContent>
